@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         myFamily.add("Arcel");
         myFamily.add("Anika");
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myFamily);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, R.layout.list_view, R.id.name, myFamily);
 
         myListView.setAdapter(myAdapter);
 
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Log.i("Parse", myFamily.get(i));
+                Toast.makeText(getApplicationContext(), myFamily.get(i), Toast.LENGTH_LONG).show();
             }
         });
     }
