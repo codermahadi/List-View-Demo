@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.codem.mahadi.listviiewdemo.Adapters.ListViewCustomAdapter;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         myListView = (ListView) findViewById(R.id.myListVive);
 
-        final ArrayList<String> myFamily = new ArrayList<String>();
+        ArrayList<String> myFamily = new ArrayList<String>();
 
         myFamily.add("Mahadi");
         myFamily.add("Fulmiya");
@@ -31,16 +33,7 @@ public class MainActivity extends AppCompatActivity {
         myFamily.add("Arcel");
         myFamily.add("Anika");
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, R.layout.list_view, R.id.name, myFamily);
-
-        myListView.setAdapter(myAdapter);
-
-        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Toast.makeText(getApplicationContext(), myFamily.get(i), Toast.LENGTH_LONG).show();
-            }
-        });
+        ListViewCustomAdapter listViewCustomAdapter = new ListViewCustomAdapter(this,myFamily);
+        myListView.setAdapter(listViewCustomAdapter);
     }
 }
